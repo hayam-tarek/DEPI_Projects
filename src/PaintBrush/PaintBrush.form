@@ -74,10 +74,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="chooseColor" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="320" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="246" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="PaintBrushBody" max="32767" attributes="0"/>
                   <Component id="Separator" max="32767" attributes="0"/>
+                  <Component id="PaintBrushBody" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -106,17 +106,19 @@
                           <Component id="redButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="greenbutton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="blueButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="fontSlider" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="greenbutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="blueButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="chooseColor" min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="Separator" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="Separator" min="-2" pref="4" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="PaintBrushBody" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -272,6 +274,11 @@
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="PaintBrushBody">
+      <Properties>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -281,7 +288,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="567" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="639" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
