@@ -60,23 +60,26 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="colorsLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="blackButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="redButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="greenbutton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="blueButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="259" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="PaintBrushBody" max="32767" attributes="0"/>
-                          <Component id="Separator" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="greenbutton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="blueButton" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="blackButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="redButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chooseColor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="320" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="PaintBrushBody" max="32767" attributes="0"/>
+                  <Component id="Separator" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -84,26 +87,33 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="clearButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="functionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="undoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="paintModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lineButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rectangleButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ovalButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pencliButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="eraserButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="solidCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dottedCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="colorsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="blackButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="redButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="greenbutton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="blueButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="clearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="functionsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="undoButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="paintModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lineButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rectangleButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ovalButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pencliButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="eraserButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="solidCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dottedCheckBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="colorsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="blackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="redButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="greenbutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="blueButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="fontSlider" alignment="0" min="-2" pref="56" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="chooseColor" min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="fontSlider" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Separator" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -209,7 +219,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Black"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="label" type="java.lang.String" value=" "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blackButtonActionPerformed"/>
@@ -223,7 +234,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Red"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="label" type="java.lang.String" value=" "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="redButtonActionPerformed"/>
@@ -237,7 +249,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Green"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="label" type="java.lang.String" value=" "/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="greenbuttonActionPerformed"/>
@@ -251,7 +264,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Blue"/>
+        <Property name="text" type="java.lang.String" value=" "/>
+        <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="blueButtonActionPerformed"/>
@@ -267,14 +281,16 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="570" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="567" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
     </Container>
     <Component class="javax.swing.JSlider" name="fontSlider">
       <Properties>
+        <Property name="majorTickSpacing" type="int" value="2"/>
         <Property name="maximum" type="int" value="10"/>
+        <Property name="minorTickSpacing" type="int" value="1"/>
         <Property name="paintLabels" type="boolean" value="true"/>
         <Property name="paintTicks" type="boolean" value="true"/>
         <Property name="value" type="int" value="5"/>
@@ -290,6 +306,19 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JSeparator" name="Separator">
+    </Component>
+    <Component class="javax.swing.JButton" name="chooseColor">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="41" green="3f" red="3c" type="rgb"/>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseColorActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

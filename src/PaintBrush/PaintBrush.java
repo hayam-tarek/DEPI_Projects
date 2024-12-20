@@ -6,6 +6,8 @@ package PaintBrush;
 
 import javax.swing.JFrame;
 import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 
 /**
  *
@@ -28,6 +30,11 @@ public class PaintBrush extends JFrame {
         drawingPanel = new DrawingPanel();
         PaintBrushBody.setLayout(new BorderLayout());
         PaintBrushBody.add(drawingPanel, BorderLayout.CENTER);
+        ImageIcon originalIcon = new ImageIcon("assets/color-wheel.png");
+        Image scaledImage = originalIcon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImage);
+        chooseColor.setIcon(scaledIcon);
+        chooseColor.setText("");
     }
 
     /**
@@ -58,6 +65,7 @@ public class PaintBrush extends JFrame {
         PaintBrushBody = new javax.swing.JPanel();
         fontSlider = new javax.swing.JSlider();
         Separator = new javax.swing.JSeparator();
+        chooseColor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paint Brush");
@@ -134,7 +142,8 @@ public class PaintBrush extends JFrame {
 
         blackButton.setBackground(new java.awt.Color(0, 0, 0));
         blackButton.setForeground(new java.awt.Color(255, 255, 255));
-        blackButton.setText("Black");
+        blackButton.setBorderPainted(false);
+        blackButton.setLabel(" ");
         blackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 blackButtonActionPerformed(evt);
@@ -143,7 +152,8 @@ public class PaintBrush extends JFrame {
 
         redButton.setBackground(new java.awt.Color(255, 0, 0));
         redButton.setForeground(new java.awt.Color(255, 255, 255));
-        redButton.setText("Red");
+        redButton.setBorderPainted(false);
+        redButton.setLabel(" ");
         redButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 redButtonActionPerformed(evt);
@@ -152,7 +162,8 @@ public class PaintBrush extends JFrame {
 
         greenbutton.setBackground(new java.awt.Color(0, 255, 0));
         greenbutton.setForeground(new java.awt.Color(255, 255, 255));
-        greenbutton.setText("Green");
+        greenbutton.setBorderPainted(false);
+        greenbutton.setLabel(" ");
         greenbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 greenbuttonActionPerformed(evt);
@@ -161,7 +172,8 @@ public class PaintBrush extends JFrame {
 
         blueButton.setBackground(new java.awt.Color(0, 0, 255));
         blueButton.setForeground(new java.awt.Color(255, 255, 255));
-        blueButton.setText("Blue");
+        blueButton.setText(" ");
+        blueButton.setBorderPainted(false);
         blueButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 blueButtonActionPerformed(evt);
@@ -176,10 +188,12 @@ public class PaintBrush extends JFrame {
         );
         PaintBrushBodyLayout.setVerticalGroup(
             PaintBrushBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGap(0, 567, Short.MAX_VALUE)
         );
 
+        fontSlider.setMajorTickSpacing(2);
         fontSlider.setMaximum(10);
+        fontSlider.setMinorTickSpacing(1);
         fontSlider.setPaintLabels(true);
         fontSlider.setPaintTicks(true);
         fontSlider.setValue(5);
@@ -187,6 +201,16 @@ public class PaintBrush extends JFrame {
         fontSlider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 fontSliderStateChanged(evt);
+            }
+        });
+
+        chooseColor.setForeground(new java.awt.Color(60, 63, 65));
+        chooseColor.setBorderPainted(false);
+        chooseColor.setContentAreaFilled(false);
+        chooseColor.setFocusPainted(false);
+        chooseColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseColorActionPerformed(evt);
             }
         });
 
@@ -225,43 +249,49 @@ public class PaintBrush extends JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(colorsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(blackButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(greenbutton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(blueButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(blackButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(redButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(redButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(greenbutton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blueButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PaintBrushBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Separator))
-                        .addContainerGap())))
+                        .addComponent(chooseColor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE))
+                    .addComponent(PaintBrushBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Separator))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clearButton)
-                    .addComponent(functionsLabel)
-                    .addComponent(undoButton)
-                    .addComponent(paintModeLabel)
-                    .addComponent(lineButton)
-                    .addComponent(rectangleButton)
-                    .addComponent(ovalButton)
-                    .addComponent(pencliButton)
-                    .addComponent(eraserButton)
-                    .addComponent(solidCheckBox)
-                    .addComponent(dottedCheckBox)
-                    .addComponent(colorsLabel)
-                    .addComponent(blackButton)
-                    .addComponent(redButton)
-                    .addComponent(greenbutton)
-                    .addComponent(blueButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fontSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(clearButton)
+                            .addComponent(functionsLabel)
+                            .addComponent(undoButton)
+                            .addComponent(paintModeLabel)
+                            .addComponent(lineButton)
+                            .addComponent(rectangleButton)
+                            .addComponent(ovalButton)
+                            .addComponent(pencliButton)
+                            .addComponent(eraserButton)
+                            .addComponent(solidCheckBox)
+                            .addComponent(dottedCheckBox)
+                            .addComponent(colorsLabel)
+                            .addComponent(blackButton)
+                            .addComponent(redButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(greenbutton)
+                            .addComponent(blueButton)
+                            .addComponent(fontSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(chooseColor, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -354,6 +384,15 @@ public class PaintBrush extends JFrame {
         drawingPanel.setStrokeWidth(strokeWidth);
     }//GEN-LAST:event_fontSliderStateChanged
 
+    private void chooseColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseColorActionPerformed
+        // TODO add your handling code here:
+        Color selectedColor = JColorChooser.showDialog(this, "Choose a Color", currentColor);
+        if (selectedColor != null) {
+            currentColor = selectedColor;
+            drawingPanel.setCurrentColor(currentColor);
+        }
+    }//GEN-LAST:event_chooseColorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +433,7 @@ public class PaintBrush extends JFrame {
     private javax.swing.JSeparator Separator;
     private javax.swing.JButton blackButton;
     private javax.swing.JButton blueButton;
+    private javax.swing.JButton chooseColor;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel colorsLabel;
     private javax.swing.JCheckBox dottedCheckBox;
