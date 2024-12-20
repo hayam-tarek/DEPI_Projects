@@ -18,6 +18,7 @@ public class PaintBrush extends JFrame {
     private boolean isSolid = false;
     private boolean isDotted = false;
     private Color currentColor = Color.BLACK;
+    private int strokeWidth = 5;
 
     /**
      * Creates new form PaintBrush
@@ -55,6 +56,8 @@ public class PaintBrush extends JFrame {
         greenbutton = new javax.swing.JButton();
         blueButton = new javax.swing.JButton();
         PaintBrushBody = new javax.swing.JPanel();
+        fontSlider = new javax.swing.JSlider();
+        Separator = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paint Brush");
@@ -173,8 +176,19 @@ public class PaintBrush extends JFrame {
         );
         PaintBrushBodyLayout.setVerticalGroup(
             PaintBrushBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
+
+        fontSlider.setMaximum(10);
+        fontSlider.setPaintLabels(true);
+        fontSlider.setPaintTicks(true);
+        fontSlider.setValue(5);
+        fontSlider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        fontSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                fontSliderStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,7 +197,6 @@ public class PaintBrush extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PaintBrushBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(functionsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -203,9 +216,12 @@ public class PaintBrush extends JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(eraserButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(solidCheckBox)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dottedCheckBox)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(solidCheckBox)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dottedCheckBox))
+                            .addComponent(fontSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(colorsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -216,8 +232,12 @@ public class PaintBrush extends JFrame {
                         .addComponent(greenbutton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(blueButton)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PaintBrushBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Separator))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +260,11 @@ public class PaintBrush extends JFrame {
                     .addComponent(redButton)
                     .addComponent(greenbutton)
                     .addComponent(blueButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(fontSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Separator, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PaintBrushBody, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -324,6 +348,12 @@ public class PaintBrush extends JFrame {
         drawingPanel.setCurrentColor(currentColor);
     }//GEN-LAST:event_blueButtonActionPerformed
 
+    private void fontSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fontSliderStateChanged
+        // TODO add your handling code here:
+        strokeWidth = fontSlider.getValue();
+        drawingPanel.setStrokeWidth(strokeWidth);
+    }//GEN-LAST:event_fontSliderStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -361,12 +391,14 @@ public class PaintBrush extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PaintBrushBody;
+    private javax.swing.JSeparator Separator;
     private javax.swing.JButton blackButton;
     private javax.swing.JButton blueButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JLabel colorsLabel;
     private javax.swing.JCheckBox dottedCheckBox;
     private javax.swing.JButton eraserButton;
+    private javax.swing.JSlider fontSlider;
     private javax.swing.JLabel functionsLabel;
     private javax.swing.JButton greenbutton;
     private javax.swing.JButton lineButton;
