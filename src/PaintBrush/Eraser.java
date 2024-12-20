@@ -4,9 +4,11 @@
  */
 package PaintBrush;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Stroke;
 import java.util.ArrayList;
 
 /**
@@ -18,10 +20,10 @@ public class Eraser extends Shape {
     private ArrayList<Point> erasePoints;
     private int radius;
 
-    public Eraser(Color color, Point startPoint, boolean isSolid, boolean isDotted) {
-        super(color, startPoint, isSolid, isDotted);
+    public Eraser(Color color, Point startPoint, boolean isSolid, boolean isDotted, int strokeWidth) {
+        super(color, startPoint, isSolid, isDotted, strokeWidth);
         this.erasePoints = new ArrayList<>();
-        this.radius = 10;
+        this.radius = strokeWidth > 5 ? strokeWidth : 5;
     }
 
     public void addErasePoint(Point point) {
@@ -31,6 +33,7 @@ public class Eraser extends Shape {
     @Override
     public void draw(Graphics2D g) {
         g.setColor(Color.WHITE);
+//        g.setStroke(new BasicStroke(strokeWidth));
         for (Point p : erasePoints) {
             g.fillOval(p.x - radius / 2, p.y - radius / 2, radius, radius);
         }

@@ -18,13 +18,15 @@ abstract class Shape {
     protected Point startPoint;
     protected Point endPoint;
     protected boolean isSolid;
-    protected  boolean isDotted;
+    protected boolean isDotted;
+    protected int strokeWidth;
 
-    public Shape(Color color, Point startPoint, boolean isSolid, boolean isDotted) {
+    public Shape(Color color, Point startPoint, boolean isSolid, boolean isDotted, int strokeWidth) {
         this.color = color;
         this.startPoint = startPoint;
         this.isSolid = isSolid;
         this.isDotted = isDotted;
+        this.strokeWidth = strokeWidth;
     }
 
     public void setEndPoint(Point endPoint) {

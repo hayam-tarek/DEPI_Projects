@@ -25,6 +25,7 @@ public class DrawingPanel extends JPanel {
     private Color currentColor = Color.BLACK;
     private boolean isSolid = false;
     private boolean isDotted = false;
+    private int strokeWidth = 5;
 
     public DrawingPanel() {
         setBackground(Color.WHITE);
@@ -34,19 +35,19 @@ public class DrawingPanel extends JPanel {
             public void mousePressed(MouseEvent e) {
                 switch (currentMode) {
                     case "Line":
-                        currentShape = new Line(currentColor, e.getPoint(), isSolid, isDotted);
+                        currentShape = new Line(currentColor, e.getPoint(), isSolid, isDotted, strokeWidth);
                         break;
                     case "Rectangle":
-                        currentShape = new RectangleShape(currentColor, e.getPoint(), isSolid, isDotted);
+                        currentShape = new RectangleShape(currentColor, e.getPoint(), isSolid, isDotted, strokeWidth);
                         break;
                     case "Oval":
-                        currentShape = new Oval(currentColor, e.getPoint(), isSolid, isDotted);
+                        currentShape = new Oval(currentColor, e.getPoint(), isSolid, isDotted, strokeWidth);
                         break;
                     case "Pencil":
-                        currentShape = new Pencil(currentColor, e.getPoint(), isSolid, isDotted);
+                        currentShape = new Pencil(currentColor, e.getPoint(), isSolid, isDotted, strokeWidth);
                         break;
                     case "Eraser":
-                        currentShape = new Eraser(currentColor, e.getPoint(), isSolid, isDotted);
+                        currentShape = new Eraser(currentColor, e.getPoint(), isSolid, isDotted, strokeWidth);
                         break;
                     default:
                         currentShape = null;
@@ -92,6 +93,10 @@ public class DrawingPanel extends JPanel {
         if (currentShape != null) {
             currentShape.draw(g2);
         }
+    }
+
+    public void setStrokeWidth(int strokeWidth) {
+        this.strokeWidth = strokeWidth;
     }
 
     public void setCurrentMode(String mode) {

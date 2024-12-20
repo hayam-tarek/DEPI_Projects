@@ -15,8 +15,8 @@ import java.awt.Point;
  */
 class RectangleShape extends Shape {
 
-    public RectangleShape(Color color, Point startPoint, boolean isSolid, boolean isDotted) {
-        super(color, startPoint, isSolid, isDotted);
+    public RectangleShape(Color color, Point startPoint, boolean isSolid, boolean isDotted, int strokeWidth) {
+        super(color, startPoint, isSolid, isDotted, strokeWidth);
     }
 
     @Override
@@ -24,9 +24,9 @@ class RectangleShape extends Shape {
         g.setColor(color);
         if (isDotted) {
             float[] dashPattern = {10, 10};
-            g.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, dashPattern, 0));
+            g.setStroke(new BasicStroke(strokeWidth, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, dashPattern, 0));
         } else {
-            g.setStroke(new BasicStroke(1));
+            g.setStroke(new BasicStroke(strokeWidth));
         }
         if (endPoint != null) {
             int x = Math.min(startPoint.x, endPoint.x);
